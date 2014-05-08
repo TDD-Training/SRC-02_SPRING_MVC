@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>All Requirements</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/ll.css" th:href="@{/css/ll.css}" />
+
+</head>
+<body>
+	<div>
+		<img src="../images/stsmlogo.png" height="120" alt="LL logo" title="LL logo" th:src="@{/images/LL_logo.png}" />
+	</div>
+
+	<h1>Requirements</h1>
+
+
+<div class="requirementslist">
+
+	<form action="/addRequirement" method="POST">
+		ID: <input id="id" name="id" th:value="${id}" />
+		NAME: <input id="name" name="name" th:value="${name}" />
+		<input id="estimation" name="estimation" type="hidden" th:value="${estimation}"/>		
+		<input type="submit" value="Add to list" />
+	</form>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>ESTIMATION</th>
+			<th>DONE</th>
+		</tr>
+		<tr>
+		</tr>
+		<tr th:each="req : ${requirements}">
+			<td th:text="${req.id}">1</td>
+			<td th:text="${req.name}">Wymaganie 1</td>
+			<td th:text="${req.estimation}">XXL</td>
+			<td th:text="${req.done}? true : false">yes</td>
+		</tr>
+
+
+	</table>
+
+</div>
+
+</body>
+</html>

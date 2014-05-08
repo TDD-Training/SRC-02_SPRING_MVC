@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>All Requirements</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../css/stsm.css" th:href="@{/css/stsm.css}" />
+</head>
+<body>
+
+	<div>
+		<img src="../images/stsmlogo.png" alt="STSM logo" title="STSM logo" th:src="@{/images/stsmlogo.png}" th:alt-title="#{title.application}" />
+	</div>
+
+	<h1>src/main/webapp/WEB-INF/templates/all.html</h1>
+	
+	<h2 th:text="#{title.list}">List of Requirements</h2>
+
+	<div class="seedstarterlist" th:unless="${#lists.isEmpty(requirements)}">
+
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{requirement.id}">ID</th>
+					<th th:text="#{requirement.name}">Name</th>
+					<th th:text="#{requirement.estimation}">Estimation</th>
+					<th th:text="#{requirement.done}">Done</th>
+					<th th:text="#{requirement.doneAfter}">Completed after</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="req : ${requirements}">
+					<td th:text="${req.id}">1</td>
+					<td th:text="${req.name}">Some Name</td>
+					<td th:text="${req.estimation}">XXL</td>
+					<td th:text="${req.done}? #{bool.true} : #{bool.false}">yes</td>
+					<td th:text="${{req.doneAfter}}">13/01/2011</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+</html>
